@@ -29,29 +29,36 @@
 </div>
 
 <ol class="list-unstyled sortable sortable-list mb-2" id="sortable">
-    <li class="sortable-item" data-id="1">
-        <div class="card">
-            <div class="card-body row">
-                <div class="form-group col-2">
-                    <label for="selectInput1">{{ trans('zchangelog::admin.fields.level') }}</label>
-                    <select class="form-control" id="selectInput1" name="changelog[1][level]">
-                        <option value="1" class="text-info">{{ trans('zchangelog::admin.levels.info') }}</option>
-                        <option value="2" class="text-success">{{ trans('zchangelog::admin.levels.success') }}</option>
-                        <option value="3" class="text-danger">{{ trans('zchangelog::admin.levels.danger') }}</option>
-                        <option value="4" class="text-warning">{{ trans('zchangelog::admin.levels.warning') }}</option>
-                    </select>
-                </div>
-                <div class="form-group col-9">
-                    <label for="changeLogDescriptionInput1">{{ trans('messages.fields.description') }}</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="changeLogDescriptionInput1"
-                           name="changelog[1][description]" required>
-                </div>
-                <div class="form-group col-1" style="margin-top: 30px">
-                    <span class="btn btn-danger" onclick="deleteElement(this)">{{ trans('messages.actions.delete') }}</span>
+    {{ dd(session()->getOldInput()) }}
+    @foreach(old('changelog[]', $updates ?? []) as $value)
+        <li class="sortable-item" data-id="{{ $value->order }}">
+            <div class="card">
+                <div class="card-body row">
+                    <div class="form-group col-2">
+                        <label
+                            for="selectInput{{ $value->order }}">{{ trans('zchangelog::admin.fields.level') }}</label>
+                        <select class="form-control" id="selectInput{{ $value->order }}" name="changelog[1][level]">
+                            @foreach(['info', 'success', 'danger', 'warning'] as $level)
+                                <option value="info" @if($value->level == $level) selected @endif
+                                class="text-{{ $level }}">{{ trans('zchangelog::admin.levels.' . $level) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-9">
+                        <label
+                            for="changeLogDescriptionInput{{ $value->order }}">{{ trans('messages.fields.description') }}</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                               id="changeLogDescriptionInput{{ $value->order }}" value="{{ $value->description }}"
+                               name="changelog[1][description]" required>
+                    </div>
+                    <div class="form-group col-1" style="margin-top: 30px">
+                        <span class="btn btn-danger"
+                              onclick="deleteElement(this)">{{ trans('messages.actions.delete') }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </li>
+        </li>
+    @endforeach
 </ol>
 
 <span id="addChangeLog" class="btn btn-success">{{ trans('messages.actions.add') }}</span>

@@ -51,7 +51,7 @@
                 input += '<div class="form-group col-2">';
                 input += `<label for="selectInput${order}">{{ trans('zchangelog::admin.fields.level') }}</label>`;
                 input += `<select class="form-control" id="selectInput${order}" name="changelog[${order}][level]">`;
-                input += '<option value="1" class="text-info">{{ trans('zchangelog::admin.levels.info') }}</option><option value="2" class="text-success">{{ trans('zchangelog::admin.levels.success') }}</option><option value="3" class="text-danger">{{ trans('zchangelog::admin.levels.danger') }}</option><option value="4" class="text-warning">{{ trans('zchangelog::admin.levels.warning') }}</option>';
+                input += '<option value="info" class="text-info">{{ trans('zchangelog::admin.levels.info') }}</option><option value="success" class="text-success">{{ trans('zchangelog::admin.levels.success') }}</option><option value="danger" class="text-danger">{{ trans('zchangelog::admin.levels.danger') }}</option><option value="warning" class="text-warning">{{ trans('zchangelog::admin.levels.warning') }}</option>';
                 input += '</select></div><div class="form-group col-9">';
                 input += `<label for="changeLogDescriptionInput${order}">{{ trans('messages.fields.description') }}</label>`;
                 input += `<input type="text" class="form-control @error('name') is-invalid @enderror" id="changeLogDescriptionInput${order}" name="changelog[${order}][description]" required>`;

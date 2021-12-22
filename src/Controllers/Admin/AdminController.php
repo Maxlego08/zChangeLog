@@ -4,6 +4,7 @@ namespace Azuriom\Plugin\Zchangelog\Controllers\Admin;
 
 use Azuriom\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -27,7 +28,7 @@ class AdminController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->all());
+        return Redirect::back()->withInput();
     }
 
 }
