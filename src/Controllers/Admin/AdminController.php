@@ -3,6 +3,7 @@
 namespace Azuriom\Plugin\Zchangelog\Controllers\Admin;
 
 use Azuriom\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -24,4 +25,9 @@ class AdminController extends Controller
     public function create(){
         return view('zchangelog::admin.create');
     }
+
+    public function store(Request $request){
+        dd($request->all());
+    }
+
 }
