@@ -37,7 +37,7 @@
             parentElement.parentNode.removeChild(parentElement);
         }
 
-        let order = 1;
+        let order = 0;
 
         window.addEventListener('load', () => {
 
@@ -60,6 +60,8 @@
                 input += '</div>';
                 input += '</div>';
                 input += '</div>';
+
+                order += 1;
 
                 const newElement = document.createElement('li');
                 newElement.classList.add('sortable-item');
