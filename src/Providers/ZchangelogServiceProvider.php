@@ -96,7 +96,12 @@ class ZchangelogServiceProvider extends BasePluginServiceProvider
     protected function adminNavigation()
     {
         return [
-            //
+            'advent' => [
+                'name' => 'zchangelog::admin.title', // Traduction du nom de l'onglet
+                'icon' => 'fas fa-scroll', // Icône FontAwesome
+                'route' => 'zchangelog.admin.index', // Route de la page
+                'permission' => 'zchangelog.use', // (Optionnel) Permission nécessaire pour voir cet onglet
+            ],
         ];
     }
 

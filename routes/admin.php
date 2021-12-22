@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AdminController::class, 'index']);
+Route::get('/', [AdminController::class, 'index'])->name('index');
+Route::get('/create', [AdminController::class, 'create'])->name('create');
+Route::post('/store', [AdminController::class, 'store'])->name('store');

@@ -15,4 +15,13 @@ class AdminController extends Controller
     {
         return view('zchangelog::admin.index');
     }
+
+    /**
+     * Create a new changelog
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function create(){
+        return view('zchangelog::admin.create');
+    }
 }
