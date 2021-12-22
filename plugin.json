@@ -1,0 +1,14 @@
+{
+    "id": "zchangelog",
+    "name": "zChangeLog",
+    "description": "Simple changelogs",
+    "version": "1.0.0",
+    "url": "https://groupez.dev",
+    "authors": [
+        "GroupeZ"
+    ],
+    "providers": [
+        "\\Azuriom\\Plugin\\Zchangelog\\Providers\\ZchangelogServiceProvider",
+        "\\Azuriom\\Plugin\\Zchangelog\\Providers\\RouteServiceProvider"
+    ]
+}
