@@ -22,4 +22,10 @@ class Update extends Model
     protected $prefix = 'zchangelog_';
 
     protected $fillable = ['change_log_id', 'order', 'level', 'description', 'created_at', 'updated_at'];
+
+    public function icon()
+    {
+
+    }
+
 }

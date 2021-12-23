@@ -3,6 +3,7 @@
 namespace Azuriom\Plugin\Zchangelog\Controllers;
 
 use Azuriom\Http\Controllers\Controller;
+use Azuriom\Plugin\Zchangelog\Models\ChangeLog;
 
 class ZchangelogHomeController extends Controller
 {
@@ -13,6 +14,8 @@ class ZchangelogHomeController extends Controller
      */
     public function index()
     {
-        return view('zchangelog::index');
+        return view('zchangelog::index', [
+            'changelogs' => ChangeLog::with('updates')->latest()->paginate(),
+        ]);
     }
 }

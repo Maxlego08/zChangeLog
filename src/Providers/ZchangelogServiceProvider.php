@@ -3,6 +3,7 @@
 namespace Azuriom\Plugin\Zchangelog\Providers;
 
 use Azuriom\Extensions\Plugin\BasePluginServiceProvider;
+use Azuriom\Models\Permission;
 
 class ZchangelogServiceProvider extends BasePluginServiceProvider
 {
@@ -73,7 +74,9 @@ class ZchangelogServiceProvider extends BasePluginServiceProvider
 
         $this->registerUserNavigation();
 
-        //
+        Permission::registerPermissions([
+            'zchangelog.use' => 'zchangelog::admin.permissions.use',
+        ]);
     }
 
     /**
@@ -84,7 +87,7 @@ class ZchangelogServiceProvider extends BasePluginServiceProvider
     protected function routeDescriptions()
     {
         return [
-            //
+            'zchangelog.index' => 'zchangelog::messages.title',
         ];
     }
 

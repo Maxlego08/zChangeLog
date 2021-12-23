@@ -38,4 +38,6 @@
                class="btn btn-success">{{ trans('messages.actions.add') }}</a>
         </div>
     </div>
+
+    @include('zchangelog::admin._icon')
 @endsection

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AdminController::class, 'index'])->name('index');
 Route::get('/create', [AdminController::class, 'create'])->name('create');
 Route::post('/store', [AdminController::class, 'store'])->name('store');
+Route::post('/icon', [AdminController::class, 'updateIcon'])->name('icon');
 Route::get('/edit/{changeLog}', [AdminController::class, 'edit'])->name('edit');
 Route::get('/destroy/{changeLog}', [AdminController::class, 'destroy'])->name('destroy');
 Route::post('/edit/{changeLog}/update', [AdminController::class, 'update'])->name('update');
