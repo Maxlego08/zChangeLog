@@ -3,7 +3,7 @@
 namespace Azuriom\Plugin\Zchangelog\Controllers\Admin;
 
 use Azuriom\Http\Controllers\Controller;
-use Azuriom\Models\ChangeLog;
+use Azuriom\Plugin\Zchangelog\Models\ChangeLog;
 use Azuriom\Plugin\Zchangelog\Requests\ChangeLogRequest;
 use Illuminate\Support\Facades\Redirect;
 
@@ -71,7 +71,8 @@ class AdminController extends Controller
             }
         }
         $changelog = ChangeLog::create($request->validated());
-        dd($updates);
+
+        return Redirect::back()->withInput();
     }
 
 }

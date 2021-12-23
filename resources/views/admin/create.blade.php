@@ -21,17 +21,6 @@
             });
         });
 
-        function serialize(sortable) {
-            return [].slice.call(sortable.children).map(function (child) {
-                const nested = child.querySelector('.sortable');
-
-                return {
-                    id: child.dataset['id'],
-                    children: nested ? serialize(nested) : [],
-                };
-            });
-        }
-
         function deleteElement(element) {
             const parentElement = element.parentNode.parentNode.parentNode.parentNode;
             parentElement.parentNode.removeChild(parentElement);
@@ -50,11 +39,11 @@
                 input += '<div class="card-body row">';
                 input += '<div class="form-group col-2">';
                 input += `<label for="selectInput${order}">{{ trans('zchangelog::admin.fields.level') }}</label>`;
-                input += `<select class="form-control" id="selectInput${order}" name="changelog[${order}][level]">`;
+                input += `<select class="form-control" id="selectInput${order}" name="changelog[{index}][level]">`;
                 input += '<option value="info" class="text-info">{{ trans('zchangelog::admin.levels.info') }}</option><option value="success" class="text-success">{{ trans('zchangelog::admin.levels.success') }}</option><option value="danger" class="text-danger">{{ trans('zchangelog::admin.levels.danger') }}</option><option value="warning" class="text-warning">{{ trans('zchangelog::admin.levels.warning') }}</option>';
                 input += '</select></div><div class="form-group col-9">';
                 input += `<label for="changeLogDescriptionInput${order}">{{ trans('messages.fields.description') }}</label>`;
-                input += `<input type="text" class="form-control @error('name') is-invalid @enderror" id="changeLogDescriptionInput${order}" name="changelog[${order}][description]" required>`;
+                input += `<input type="text" class="form-control @error('name') is-invalid @enderror" id="changeLogDescriptionInput${order}" name="changelog[{index}][description]" required>`;
                 input += '</div><div class="form-group col-1" style="margin-top: 30px">';
                 input += '<span class="btn btn-danger" onclick="deleteElement(this)">{{ trans('messages.actions.delete') }}</span>';
                 input += '</div>';
@@ -68,6 +57,15 @@
                 newElement.setAttribute('data-id', order);
                 newElement.innerHTML = input;
                 sortable.append(newElement);
+            });
+
+            document.getElementById('changelog-form').addEventListener('submit', () => {
+                console.log("ici");
+                let i = 0;
+                sortable.querySelectorAll('.card-body').forEach(function (el) {
+                    el.querySelectorAll('.form-control').forEach(input => input.name = input.name.replace('{index}', i.toString()));
+                    i++;
+                });
             });
         });
     </script>

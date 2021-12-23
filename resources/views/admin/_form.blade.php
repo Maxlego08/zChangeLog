@@ -28,8 +28,9 @@
     @enderror
 </div>
 
+<!-- [['order' => 1, 'level' => 'danger', 'description' => 'dd']] -->
 <ol class="list-unstyled sortable sortable-list mb-2" id="sortable">
-    @foreach(old('changelog', $updates ?? [['order' => 1, 'level' => 'danger', 'description' => 'dd']]) as $key => $value)
+    @foreach(old('changelog', $updates ?? []) as $key => $value)
         <li class="sortable-item" data-id="{{ $value['order'] ?? $key }}">
             <div class="card">
                 <div class="card-body row">
@@ -37,7 +38,7 @@
                         <label
                             for="selectInput{{ $value['order'] ?? $key }}">{{ trans('zchangelog::admin.fields.level') }}</label>
                         <select class="form-control @error('changelog[' . ($value['order'] ?? $key) . '][level]') is-invalid @enderror" id="selectInput{{ $value['order'] ?? $key }}"
-                                name="changelog[1][level]">
+                                name="changelog[{index}][level]">
                             @foreach(['info', 'success', 'danger', 'warning'] as $level)
                                 <option value="info" @if($value['level'] == $level) selected @endif
                                 class="text-{{ $level }}">{{ trans('zchangelog::admin.levels.' . $level) }}</option>
@@ -53,7 +54,7 @@
                         <input type="text" class="form-control @error('changelog[' . ($value['order'] ?? $key) . '][description]') is-invalid @enderror"
                                id="changeLogDescriptionInput{{ $value['order'] ?? $key }}"
                                value="{{ $value['description'] }}"
-                               name="changelog[1][description]" required>
+                               name="changelog[{index}][description]" required>
                         @error('changelog[' . ($value['order'] ?? $key) . '][description]')
                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                         @enderror

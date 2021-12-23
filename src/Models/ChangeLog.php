@@ -1,8 +1,9 @@
 <?php
 
-namespace Azuriom\Models;
+namespace Azuriom\Plugin\Zchangelog\Models;
 
 use Azuriom\Models\Traits\HasTablePrefix;
+use Azuriom\Plugin\Changelog\Models\Update;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -31,7 +32,7 @@ class ChangeLog extends Model
      */
     public function updates(): HasMany
     {
-        return $this->hasMany(\Azuriom\Plugin\Changelog\Models\Update::class, 'change_log_id');
+        return $this->hasMany(Update::class, 'change_log_id');
     }
 
 }
