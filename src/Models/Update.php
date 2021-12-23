@@ -3,10 +3,12 @@
 namespace Azuriom\Plugin\Zchangelog\Models;
 
 use Azuriom\Models\Traits\HasTablePrefix;
+use Azuriom\Plugin\Zchangelog\Controllers\Admin\AdminController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * @property string $level
  * @method static Update create(array $values)
  */
 class Update extends Model
@@ -25,7 +27,7 @@ class Update extends Model
 
     public function icon()
     {
-
+        return setting(AdminController::SETTING_PREFIX . $this->level, AdminController::DEFAULT_SETTINGS[$this->level]);
     }
 
 }

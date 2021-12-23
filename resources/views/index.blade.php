@@ -25,7 +25,7 @@
                             <tbody>
                             @foreach($changelog->updates->sortByDesc('order') as $update)
                                 <tr>
-                                    <th style="width: 50px" class="text-{{ $update->level }}">{{ $update->icon() }}</th>
+                                    <th style="width: 25px" class="text-{{ $update->level }}"><i class="{{ $update->icon() }}"></i></th>
                                     <th>{{ $update->description }}</th>
                                 </tr>
                             @endforeach
