@@ -1,11 +1,14 @@
 <?php
 
-namespace Azuriom\Models;
+namespace Azuriom\Plugin\Zchangelog\Models;
 
 use Azuriom\Models\Traits\HasTablePrefix;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static Update create(array $values)
+ */
 class Update extends Model
 {
     use HasFactory;

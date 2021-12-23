@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', trans('zchangelog::admin.create'))
+@section('title', trans('zchangelog::admin.update'))
 
 @push('footer-scripts')
     @include('zchangelog::admin._script')
@@ -9,7 +9,7 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-body">
-            <form method="post" action="{{ route('zchangelog.admin.store') }}" id="changelog-form">
+            <form method="post" action="{{ route('zchangelog.admin.update', $changelog) }}" id="changelog-form">
 
                 @csrf
 

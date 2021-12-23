@@ -3,6 +3,12 @@
 return [
     'title' => 'ZChangeLog',
     'create' => 'Créer un changelog',
+    'update' => 'Modifier un changelog',
+    'status' => [
+        'create' => 'Vous venez de créer un changelog.',
+        'update' => 'Vous venez de modifier un changelog.',
+        'destroy' => 'Vous venez de supprimer un changelog.',
+    ],
 
     'fields' => [
         'level' => 'Level'

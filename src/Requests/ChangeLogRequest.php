@@ -16,8 +16,8 @@ class ChangeLogRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:195', 'min:3'],
+            'author' => ['required', 'max:195', 'min:3'],
             'description' => ['sometimes', 'nullable', 'max:5000'],
-            'author' => ['sometimes', 'nullable', 'max:195'],
             'changelog' => ['required', 'array'],
         ];
     }

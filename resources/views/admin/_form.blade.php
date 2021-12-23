@@ -28,12 +28,12 @@
     @enderror
 </div>
 
-<!-- [['order' => 1, 'level' => 'danger', 'description' => 'dd']] -->
 <ol class="list-unstyled sortable sortable-list mb-2" id="sortable">
     @foreach(old('changelog', $updates ?? []) as $key => $value)
         <li class="sortable-item" data-id="{{ $value['order'] ?? $key }}">
             <div class="card">
                 <div class="card-body row">
+                    <input type="hidden" class="form-control" name="changelog[{index}][id]" value="{{ $value['id'] }}">
                     <div class="form-group col-2">
                         <label
                             for="selectInput{{ $value['order'] ?? $key }}">{{ trans('zchangelog::admin.fields.level') }}</label>
