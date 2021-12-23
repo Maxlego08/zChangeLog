@@ -40,7 +40,7 @@
                         <select class="form-control @error('changelog[' . ($value['order'] ?? $key) . '][level]') is-invalid @enderror" id="selectInput{{ $value['order'] ?? $key }}"
                                 name="changelog[{index}][level]">
                             @foreach(['info', 'success', 'danger', 'warning'] as $level)
-                                <option value="info" @if($value['level'] == $level) selected @endif
+                                <option value="{{ $level }}" @if($value['level'] == $level) selected @endif
                                 class="text-{{ $level }}">{{ trans('zchangelog::admin.levels.' . $level) }}</option>
                             @endforeach
                         </select>

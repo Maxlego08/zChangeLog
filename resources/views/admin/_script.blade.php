@@ -55,7 +55,6 @@
         });
 
         document.getElementById('changelog-form').addEventListener('submit', () => {
-            console.log("ici");
             let i = 0;
             sortable.querySelectorAll('.card-body').forEach(function (el) {
                 el.querySelectorAll('.form-control').forEach(input => input.name = input.name.replace('{index}', i.toString()));
