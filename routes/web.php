@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ZchangelogHomeController::class, 'index']);
+Route::get('/', [ZchangelogHomeController::class, 'index'])->name('index');

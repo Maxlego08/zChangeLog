@@ -3,6 +3,7 @@
 namespace Azuriom\Plugin\Zchangelog\Providers;
 
 use Azuriom\Extensions\Plugin\BasePluginServiceProvider;
+use Azuriom\Models\Permission;
 
 class ZchangelogServiceProvider extends BasePluginServiceProvider
 {
@@ -73,7 +74,9 @@ class ZchangelogServiceProvider extends BasePluginServiceProvider
 
         $this->registerUserNavigation();
 
-        //
+        Permission::registerPermissions([
+            'zchangelog.use' => 'zchangelog::admin.permissions.use',
+        ]);
     }
 
     /**
@@ -84,7 +87,7 @@ class ZchangelogServiceProvider extends BasePluginServiceProvider
     protected function routeDescriptions()
     {
         return [
-            //
+            'zchangelog.index' => 'zchangelog::messages.title',
         ];
     }
 
@@ -96,7 +99,12 @@ class ZchangelogServiceProvider extends BasePluginServiceProvider
     protected function adminNavigation()
     {
         return [
-            //
+            'advent' => [
+                'name' => 'zchangelog::admin.title', // Traduction du nom de l'onglet
+                'icon' => 'fas fa-scroll', // Icône FontAwesome
+                'route' => 'zchangelog.admin.index', // Route de la page
+                'permission' => 'zchangelog.use', // (Optionnel) Permission nécessaire pour voir cet onglet
+            ],
         ];
     }
 
