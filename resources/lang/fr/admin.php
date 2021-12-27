@@ -9,7 +9,7 @@ return [
         'create' => 'Vous venez de créer un changelog.',
         'update' => 'Vous venez de modifier un changelog.',
         'destroy' => 'Vous venez de supprimer un changelog.',
-        'icon' => 'Vous venez de modifier les icônes',
+        'icon' => 'Vous venez de modifier les icônes.',
     ],
 
     'fields' => [
@@ -24,9 +24,9 @@ return [
     ],
 
     'errors' => [
-        'level' => 'Impossible de trouver le type du changelog',
+        'level' => 'Impossible de trouver le type du changelog.',
         'description' => [
-            'empty' => 'La description est obligatoire',
+            'empty' => 'La description est obligatoire.',
             'length' => 'Votre texte doit avoir moins de 1.000 caractères.',
         ]
     ],
